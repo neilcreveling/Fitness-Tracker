@@ -34,8 +34,10 @@ router.put('/:id', ({ params, body }, res) => {
                 console.log(success);
             }
         }
-    //).then((updatedWorkout) => res.json(updatedWorkout))
-)});
+    )
+    .then((dbWorkout) => res.json(dbWorkout))
+    .catch((err) => res.status(400),json(err))
+});
 
 router.get('/range', (req, res) => {
     Workout.aggregate(
